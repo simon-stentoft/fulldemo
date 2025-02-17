@@ -1,0 +1,27 @@
+{% include "_header.html" %}
+
+<div id="users">
+  <!-- for row in rows|unique(attribute='user_pk') -->
+  {% for row in rows: %}
+  <div class="user" id="user_{{ row.user_pk }}">
+    <div>{{ row.user_pk }}</div>
+    <div>
+      <a href="/users/{{ row.user_pk }}">{{ row.user_name }}</a>
+    </div>
+    <div class="phones">
+      {% for phone in row.user_phones %}
+      <input type="text" value="{{ phone }}" readonly />
+      {% endfor %}
+    </div>
+    <button
+      type="button"
+      class="delete-button"
+      data-user-id="{{ row.user_pk }}"
+    >
+      Delete user
+    </button>
+  </div>
+  {% endfor %}
+</div>
+
+{% include "_footer.html" %}

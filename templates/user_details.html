@@ -1,0 +1,18 @@
+{% include "_header.html" %}
+
+<h1>User Details</h1>
+<div class="user-detail">
+  <h2>{{ user.user_name }}</h2>
+  <p>User ID: {{ user.user_pk }}</p>
+  <h3>Phone Numbers:</h3>
+  <ul>
+    {% if user.user_phones %} {% for phone in user.user_phones %}
+    <li>{{ phone }}</li>
+    {% endfor %} {% else %}
+    <li>No phone numbers available.</li>
+    {% endif %}
+  </ul>
+  <a href="/" class="btn">Back to the list of users</a>
+</div>
+
+{% include "_footer.html" %}
